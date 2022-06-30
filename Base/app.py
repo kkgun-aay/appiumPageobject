@@ -1,20 +1,20 @@
-# # -*- coding: utf-8 -*-
+# # # -*- coding: utf-8 -*-
 # from time import sleep
 # from appium import webdriver
+# from Base.base_page import BasePage
 #
 #
-# class App:
-#     _app_driver = None
+# class App(BasePage):
 #     _package = "com.intelcupid.shesay"
 #     _activity = "com.intelcupid.shesay.main.PosterActivity"
 #
-#     @classmethod
-#     def appstart(cls):
-#         if cls._app_driver is None:
+#     def app_start(self):
+#
+#         if self.driver is None:
 #             Options = {
 #                 "platformName": "Android",
-#                 "appium:appPackage": cls._package,
-#                 "appium:appActivity": cls._activity,
+#                 "appium:appPackage": self._package,
+#                 "appium:appActivity": self._activity,
 #                 "appium:deviceName": "858f8512",
 #                 "appium:noReset": "true",
 #                 "appium:autoGrantPermissions": "true",
@@ -23,11 +23,7 @@
 #                 "appium:noSign": "true"
 #             }
 #
-#             cls._driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", Options)
-#             cls._driver.implicitly_wait(5)
-#         return cls._driver
+#             self.driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", Options)
+#             self.driver.implicitly_wait(5)
+#         return self.driver
 #
-#     @classmethod
-#     def appclose(cls):
-#         sleep(5)
-#         cls._driver.quit()

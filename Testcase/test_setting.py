@@ -3,7 +3,6 @@ from Page.recommendPage import recommEnd
 
 
 class Testsetting:
-
     @pytest.mark.run(order=1)
     def test_setting_back(self, appstart):
         self.driver = appstart

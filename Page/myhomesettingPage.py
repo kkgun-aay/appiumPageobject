@@ -1,6 +1,7 @@
 from appium.webdriver.common.appiumby import AppiumBy
 
 from Base.base_page import BasePage
+from Utils.install_apk import get_onactivity
 
 
 class MyhomeSetting(BasePage):

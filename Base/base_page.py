@@ -2,6 +2,7 @@
 from time import sleep
 from selenium.webdriver.remote.webdriver import WebDriver
 from appium.webdriver.common.mobileby import AppiumBy
+from Utils.install_apk import get_onactivity
 
 
 # from selenium.webdriver.support import expected_conditions as EC
@@ -10,6 +11,7 @@ from appium.webdriver.common.mobileby import AppiumBy
 
 class BasePage:
     popup_id = [(AppiumBy.ID, "com.intelcupid.shesay:id/ivClose")]
+    login_sys_popup_id = [(AppiumBy.ID, "android:id/button1")]
     # agreement_id = (AppiumBy.ID, "com.intelcupid.shesay:id/tvAgree")
     # not_reviewed = "com.intelcupid.shesay:id/ivClose"
     # agreement = "com.intelcupid.shesay:id/tvAgree"
@@ -25,17 +27,20 @@ class BasePage:
 
         try:
             self.handle_box()
+            self.get_app_activity()
             return self.driver.find_element(*locator)
         except Exception as e:
+            print("{}--元素未找到".format(locator))
             return e
-        # except:
-        #     if self.err_first <= self.err_max:
-        #         if self.is_element_exist(self.black_list_id) is True:
-        #             print(self.black_list_id)
-        #             self.find_app_element(self.black_list).click()
-        #             sleep(2)
-        #             self.err_first += 1
-        #             return self.driver.find_element(*locator)
+
+    def login_find_element(self, locator):
+        try:
+            self.login_handle_box()
+            return self.driver.find_element(*locator)
+        except Exception as e:
+
+            print("{}--元素未找到".format(locator))
+            return e
 
     def scroll_find_element(self, text):
 
@@ -73,15 +78,27 @@ class BasePage:
         for locator in self.popup_id:
             # source_page = self.driver.page_source
             elements = self.driver.find_elements(*locator)
-            print(elements)
+            # print(elements)
             if len(elements) >= 1:
                 elements[0].click()
             else:
-                print("{} not found".format(str(locator)))
-            # if self.not_reviewed in source_page:
-            #     self.driver.find_element(*locator).click()
-            # elif self.agreement in source_page:
-            #     self.driver.find_element(*locator).click()
-            # else:
-            #     return False
+                # print("{} not found".format(str(locator)))
+                return
+
+    def login_handle_box(self):
+        for locator in self.login_sys_popup_id:
+            elements = self.driver.find_elements(*locator)
+            if len(elements) >= 1:
+                elements[0].click()
+            else:
+                # print("{} not found".format(str(locator)))
+                return
+
+    def get_app_activity(self):
+        print(self.driver.current_activity)
+        if "com.intelcupid.shesay" in self.driver.current_activity:
+            print("未crash")
+        else:
+            print("崩溃了")
+
 

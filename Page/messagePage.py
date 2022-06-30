@@ -3,6 +3,7 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from Base.base_page import BasePage
 from Page.discoverPage import Discover
 from Page.postsPage import PostsPage
+from Utils.install_apk import get_onactivity
 
 
 class MessagePage(BasePage):
@@ -20,4 +21,5 @@ class MessagePage(BasePage):
         return PostsPage(self.driver)
 
     def get_message_tab_text(self):
-        return self.find_app_element(self.messagetab).text
+        text = self.find_app_element(self.messagetab).text
+        return text

@@ -2,11 +2,19 @@
 from time import sleep
 from appium import webdriver
 import pytest
+from Utils.install_apk import installapk
+
+
+# path = "/Users/lvxs/Desktop/androidapk"
+# print("先安装最新release包，然后在启动apk")
+# installapk(path)
+
+driver = None
 
 
 @pytest.fixture(scope="session")
 def appstart():
-
+    global driver
     print("app只启动一次，后面case公用一个driver")
     _package = "com.intelcupid.shesay"
     _activity = "com.intelcupid.shesay.main.PosterActivity"
@@ -15,16 +23,19 @@ def appstart():
         "appium:appPackage": _package,
         "appium:appActivity": _activity,
         "appium:deviceName": "858f8512",
-        # "appium:noReset": "true",
-        "appium:autoGrantPermissions": "true",
+        "appium:noReset": "true",
+        # "appium:autoGrantPermissions": "true",
         "newCommandTimeout": "6000",
         "automationName": "uiautomator2",
         "appium:noSign": "true"
     }
-
-    app_driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", Options)
-    app_driver.implicitly_wait(5)
-    return app_driver
+    if driver is None:
+        driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", Options)
+        driver.implicitly_wait(6)
+        sleep(3)
+    else:
+        driver.start_activity(_package, _activity)
+    return driver
 
 #
 # @pytest.fixture(scope="session")

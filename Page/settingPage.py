@@ -1,5 +1,6 @@
 from appium.webdriver.common.appiumby import AppiumBy
 from Base.base_page import BasePage
+from Utils.install_apk import get_onactivity
 
 
 class Setting(BasePage):
@@ -21,7 +22,8 @@ class Setting(BasePage):
 
     def get_setting_text(self):
         print(self.find_app_element(self.settingtext).text())
-        return self.find_app_element(self.settingtext).text()
+        text = self.find_app_element(self.settingtext).text()
+        return text
 
     def click_location(self):
         self.find_app_element(self.location).click()

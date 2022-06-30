@@ -1,12 +1,9 @@
-from time import sleep
-
 import pytest
 from Page.loginPage import Login
 
 
 @pytest.mark.run(order=1)
 class TestLogin:
-
     def testlogin(self, appstart):
         self.driver = appstart
         get_toast = Login(self.driver).not_serach_wechat()
@@ -18,4 +15,4 @@ class TestLogin:
 
 if __name__ == "__main__":
     # pytest.main(['-q', '-s'])
-    pytest.main(['-q', '-s', "-x"])
+    pytest.main(['-q', '-s', "-x", "--reruns=2", "test_discover.py"])

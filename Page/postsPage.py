@@ -3,6 +3,7 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from Base.base_page import BasePage
 from Page.discoverPage import Discover
 from Page.postnewsPage import PostNews
+from Utils.install_apk import get_onactivity
 
 
 class PostsPage(BasePage):

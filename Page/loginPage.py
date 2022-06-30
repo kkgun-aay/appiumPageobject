@@ -1,10 +1,8 @@
 from time import sleep
-
 from appium.webdriver.common.mobileby import AppiumBy
-# from selenium.webdriver.remote.webdriver import WebDriver
-# import pytest
 from Base.base_page import BasePage
 from Page.recommendPage import recommEnd
+from Utils.install_apk import get_onactivity
 
 
 class Login(BasePage):
@@ -15,36 +13,27 @@ class Login(BasePage):
     secret = (AppiumBy.ID, "com.intelcupid.shesay:id/tvSecret")
     agreepopup = (AppiumBy.ID, "com.intelcupid.shesay:id/tvAgree")
     stragreepopup = "com.intelcupid.shesay:id/tvAgree"
+    osbutton = "android:id/button1"
+    osbutton_id = (AppiumBy.ID, "android:id/button1")
 
     def app_login(self):
-        self.find_app_element(self.remember).click()
-        self.find_app_element(self.wechat).click()
+        self.login_find_element(self.remember).click()
+        self.login_find_element(self.wechat).click()
         return recommEnd(self.driver)
-        # if self.is_element_exist(self.agreepopup) is True:
-        #     self.find_app_element(self.agreepopup).click()
-        #     self.find_app_element(self.remember).click()
-        #     self.find_app_element(self.wechat).click()
-        #     return recommEnd(self.driver)
-        # else:
-        #     self.find_app_element(self.remember).click()
-        #     self.find_app_element(self.wechat).click()
-        #     return recommEnd(self.driver)
 
     def get_agreement_text(self):
-        return self.find_app_element(self.wechat_agreement).text
+        return self.login_find_element(self.wechat_agreement).text
 
     def not_serach_wechat(self):
         sleep(2)
-        if self.is_element_exist(self.stragreepopup) is True:
-            self.find_app_element(self.agreepopup).click()
-            self.find_app_element(self.wechat).click()
-            toast = self.get_toast()
-            return toast
-        else:
-            self.find_app_element(self.wechat).click()
-            toast = self.get_toast()
-            return toast
-        # self.find_app_element(self.wechat).click()
-        # toast = self.get_toast()
-        # return toast
+        # if self.is_element_exist(self.stragreepopup) is True:
+        self.login_find_element(self.agreepopup).click()
+        self.login_find_element(self.wechat).click()
+        toast = self.get_toast()
+        return toast
+        # else:
+        #     self.login_find_element(self.wechat).click()
+        #     toast = self.get_toast()
+        #     return toast
+
 
