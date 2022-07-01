@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from time import sleep
 from selenium.webdriver.remote.webdriver import WebDriver
+from appium import webdriver
 from appium.webdriver.common.mobileby import AppiumBy
 from Utils.install_apk import get_onactivity
 
@@ -12,13 +13,6 @@ from Utils.install_apk import get_onactivity
 class BasePage:
     popup_id = [(AppiumBy.ID, "com.intelcupid.shesay:id/ivClose")]
     login_sys_popup_id = [(AppiumBy.ID, "android:id/button1")]
-    # agreement_id = (AppiumBy.ID, "com.intelcupid.shesay:id/tvAgree")
-    # not_reviewed = "com.intelcupid.shesay:id/ivClose"
-    # agreement = "com.intelcupid.shesay:id/tvAgree"
-    # black_list_id = ["com.intelcupid.shesay:id/ivClose", "com.intelcupid.shesay:id/tvAgree"]
-
-    # err_max = 3
-    # err_first = 0
 
     def __init__(self, driver: WebDriver):
         self.driver = driver
@@ -27,7 +21,7 @@ class BasePage:
 
         try:
             self.handle_box()
-            self.get_app_activity()
+            get_onactivity()
             return self.driver.find_element(*locator)
         except Exception as e:
             print("{}--元素未找到".format(locator))
@@ -93,12 +87,5 @@ class BasePage:
             else:
                 # print("{} not found".format(str(locator)))
                 return
-
-    def get_app_activity(self):
-        print(self.driver.current_activity)
-        if "com.intelcupid.shesay" in self.driver.current_activity:
-            print("未crash")
-        else:
-            print("崩溃了")
 
 

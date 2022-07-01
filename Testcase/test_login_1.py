@@ -15,4 +15,4 @@ class TestLogin:
 
 if __name__ == "__main__":
     # pytest.main(['-q', '-s'])
-    pytest.main(['-q', '-s', "-x", "--reruns=2", "test_discover.py"])
+    pytest.main(['-q', '-s', "test_recommend.py", "test_discover.py"])

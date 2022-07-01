@@ -33,6 +33,6 @@ class Heartfootprint(BasePage):
     def click_superlike_buy(self):
         # self.get_app_state()
         self.find_app_element(self.buy_id).click()
-        # self.find_app_element(self.close_superlike_popup).click()
+        self.find_app_element(self.close_superlike_popup).click()
         return self
 
