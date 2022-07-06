@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from time import sleep
 from selenium.webdriver.remote.webdriver import WebDriver
-from appium import webdriver
+from Utils.seed_message_to_lark import seed_message
 from appium.webdriver.common.mobileby import AppiumBy
 from Utils.install_apk import get_onactivity
 
@@ -21,16 +21,26 @@ class BasePage:
 
         try:
             self.handle_box()
-            get_onactivity()
-            return self.driver.find_element(*locator)
+            is_crash = get_onactivity()
+            if is_crash is True:
+                return self.driver.find_element(*locator)
+            else:
+                # seed_message.seedmessage("app在点击{}元素之前崩溃了".format(locator))
+                print("app在点击{}元素之前崩溃了".format(locator))
+                self.driver.quit()
         except Exception as e:
-            print("{}--元素未找到".format(locator))
+            print("{}--元素未找到,点击失败了".format(locator))
             return e
 
     def login_find_element(self, locator):
         try:
             self.login_handle_box()
-            return self.driver.find_element(*locator)
+            is_crash = get_onactivity()
+            if is_crash is True:
+                return self.driver.find_element(*locator)
+            else:
+                seed_message.seedmessage("app崩溃了")
+                self.driver.quit()
         except Exception as e:
 
             print("{}--元素未找到".format(locator))

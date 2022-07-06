@@ -18,12 +18,13 @@ class App:
                 "appium:appActivity": self._activity,
                 "appium:deviceName": "858f8512",
                 "appium:noReset": "true",
-                "appium:autoGrantPermissions": "true",
+                # "appium:autoGrantPermissions": "true",
                 "newCommandTimeout": "6000",
                 "automationName": "uiautomator2",
                 "appium:noSign": "true"
             }
 
             self.driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", Options)
-            self.driver.implicitly_wait(5)
+            self.driver.implicitly_wait(8)
+
         return self.driver

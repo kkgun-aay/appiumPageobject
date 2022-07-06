@@ -1,4 +1,5 @@
 from Page.recommendPage import recommEnd
+from Utils.get_function_name import get__function_name
 
 
 class Testmessage:
@@ -10,4 +11,6 @@ class Testmessage:
 
             assert "消息" == messagetext
         except:
+            print("{}函数执行失败".format(get__function_name()))
             self.driver.launch_app()
+            assert False

@@ -80,7 +80,6 @@ class recommEnd(BasePage):
                 return self.find_app_element(self.likelist).text
 
     def click_feedback(self):
-        self.get_app_state()
         reporttext = "举报或反馈"
         if self.is_element_exist(self.recommendliketext):
             self.scroll_find_element(reporttext)
