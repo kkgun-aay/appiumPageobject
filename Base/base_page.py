@@ -39,7 +39,7 @@ class BasePage:
             if is_crash is True:
                 return self.driver.find_element(*locator)
             else:
-                seed_message.seedmessage("app崩溃了")
+                # seed_message.seedmessage("app在点击{}元素之前崩溃了".format(locator))
                 self.driver.quit()
         except Exception as e:
 

@@ -3,7 +3,6 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from Base.base_page import BasePage
 from Page.discoverPage import Discover
 from Page.postsPage import PostsPage
-from Utils.install_apk import get_onactivity
 
 
 class MessagePage(BasePage):

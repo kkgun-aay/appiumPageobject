@@ -21,9 +21,6 @@ class Heartfootprint(BasePage):
     def switch_tab(self):
         self.find_app_element(self.dislikeuserlike).click()
         return self
-        # self.find_app_element(self.back_id).click()
-        # from Page.recommendPage import recommEnd
-        # return recommEnd(self.driver)
 
     def click_free_receive(self):
         self.find_app_element(self.receive_id).click()

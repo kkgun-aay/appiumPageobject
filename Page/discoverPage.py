@@ -9,11 +9,15 @@ class Discover(BasePage):
     discover = (AppiumBy.ID, "com.intelcupid.shesay:id/tvTabDiscover")
     resonate = (AppiumBy.ID,"com.intelcupid.shesay:id/tvResonate")
     flash = (AppiumBy.ID, "com.intelcupid.shesay:id/tvFlash")
+    #筛选ID
     resonate_change = (AppiumBy.ID, "com.intelcupid.shesay:id/tvResonateChange")
+    #收件箱
     resonate_bell = (AppiumBy.ID, "com.intelcupid.shesay:id/ivResonateBell")
+    #星球确定按钮
     plant_select_btn = (AppiumBy.ID, "com.intelcupid.shesay:id/tvPlanetSelectBtn")
     create_signal = (AppiumBy.ID, "com.intelcupid.shesay:id/vSignalCreate")
     bell_back = (AppiumBy.ID, "com.intelcupid.shesay:id/ibBarLeft")
+    #？号页的好的按钮
     detail = (AppiumBy.ID, "com.intelcupid.shesay:id/tvButton")
     detail_text = "com.intelcupid.shesay:id/tvButton"
     question = (AppiumBy.XPATH, "//*[@text='问个问题男生来答']")

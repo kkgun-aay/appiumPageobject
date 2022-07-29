@@ -5,6 +5,7 @@ from Utils.get_function_name import get__function_name
 
 @pytest.mark.run(order=1)
 class TestLogin:
+
     def test_gettoast_login(self, app_start):
         self.driver = app_start
         try:
@@ -28,4 +29,4 @@ class TestLogin:
 
 if __name__ == "__main__":
     # pytest.main(['-q', '-s'])
-    pytest.main(['-q', '-s', "test_discover.py"])
+    pytest.main(['-q', '-s', 'test_login_1.py', 'test_recommend.py'])

@@ -6,7 +6,7 @@ from Utils.get_function_name import get__function_name
 
 class Testdiscover:
 
-    @pytest.mark.run(order=1)
+    # @pytest.mark.run(order=1)
     def test_discover(self,app_start):
         self.driver = app_start
 
@@ -18,7 +18,7 @@ class Testdiscover:
             self.driver.launch_app()
             assert False
 
-    @pytest.mark.run(order=2)
+    # @pytest.mark.run(order=2)
     def test_discover_all_btn(self, app_start):
         self.driver = app_start
         try:
@@ -29,7 +29,7 @@ class Testdiscover:
             self.driver.launch_app()
             assert False
 
-    @pytest.mark.run(order=3)
+    # @pytest.mark.run(order=3)
     def test_create_signal_success(self, app_start):
         self.driver = app_start
         try:

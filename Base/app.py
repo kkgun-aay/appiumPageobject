@@ -1,7 +1,5 @@
 # # # -*- coding: utf-8 -*-
-from time import sleep
 from appium import webdriver
-# from Base.base_page import BasePage
 
 
 class App:
@@ -16,7 +14,7 @@ class App:
                 "platformName": "Android",
                 "appium:appPackage": self._package,
                 "appium:appActivity": self._activity,
-                "appium:deviceName": "858f8512",
+                "appium:deviceName": "mi9",
                 "appium:noReset": "true",
                 # "appium:autoGrantPermissions": "true",
                 "newCommandTimeout": "6000",
@@ -25,6 +23,6 @@ class App:
             }
 
             self.driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", Options)
-            self.driver.implicitly_wait(8)
+            self.driver.implicitly_wait(6)
 
         return self.driver

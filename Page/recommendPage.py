@@ -18,6 +18,7 @@ class recommEnd(BasePage):
     user_profile = (AppiumBy.XPATH, "//android.view.ViewGroup[2]/android.widget.ImageView[1]")
     likebutton = (AppiumBy.ID, "com.intelcupid.shesay:id/ibControlLike")
     userprofile_back = (AppiumBy.ID, "com.intelcupid.shesay:id/ibBarLeft")
+    # #本地地理位置弹窗同意按钮
     allowloction = (AppiumBy.ID, "com.intelcupid.shesay:id/btnAllowLocation")
     strallowloction = "com.intelcupid.shesay:id/btnAllowLocation"
     likelist = (AppiumBy.ID, "com.intelcupid.shesay:id/tvOutOfLikeList")
@@ -41,6 +42,21 @@ class recommEnd(BasePage):
     submit = (AppiumBy.ID, "com.intelcupid.shesay:id/reportSubmit")
     toppeople_close = "com.intelcupid.shesay:id/ivCancel"
     toppeople_close_id = (AppiumBy.ID, "com.intelcupid.shesay:id/ivCancel")
+    xpath_allow_loction = "//*[contains(@text,'允许') and @class='android.widget.Button']"
+
+    def click_loction_allow(self):
+        if self.is_element_exist(self.strallowloction) is True:
+            print("发现带有允许字样的系统弹窗，进行处理中")
+            self.find_app_element(self.allowloction).click()
+            # 通过find_elements方法一直取返回对象的第一个元素去点击，适配Android手机带有多个允许字样的地理位置弹窗
+            self.driver.find_elements(AppiumBy.XPATH, self.xpath_allow_loction)[0].click()
+            self.find_app_element(self.allowloction).click()
+            self.driver.find_elements(AppiumBy.XPATH, self.xpath_allow_loction)[0].click()
+            return self
+
+        else:
+            print("未发现带有允许字样的系统弹窗，略过")
+            return self
 
     def goto_discover(self):
         self.find_app_element(self.discover).click()
@@ -155,7 +171,6 @@ class recommEnd(BasePage):
 
     def goto_likelist(self):
         self.find_app_element(self.likelist).click()
-        get_onactivity()
         from Page.heartfootprint import Heartfootprint
         return Heartfootprint(self.driver)
 
