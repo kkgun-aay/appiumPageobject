@@ -21,13 +21,14 @@ class BasePage:
 
         try:
             self.handle_box()
-            is_crash = get_onactivity()
-            if is_crash is True:
-                return self.driver.find_element(*locator)
-            else:
-                # seed_message.seedmessage("app在点击{}元素之前崩溃了".format(locator))
-                print("app在点击{}元素之前崩溃了".format(locator))
-                self.driver.quit()
+            return self.driver.find_element(*locator)
+            # is_crash = get_onactivity()
+            # if is_crash is True:
+            #     return self.driver.find_element(*locator)
+            # else:
+            #     # seed_message.seedmessage("app在点击{}元素之前崩溃了".format(locator))
+            #     print("app在点击{}元素之前崩溃了".format(locator))
+            #     self.driver.quit()
         except Exception as e:
             print("{}--元素未找到,点击失败了".format(locator))
             return e
@@ -69,7 +70,7 @@ class BasePage:
 
     def is_element_exist(self, element):
 
-        sleep(2)
+        sleep(3)
         source = self.driver.page_source
         # print(source)
         if element in source:
