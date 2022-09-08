@@ -32,6 +32,7 @@ class Login(BasePage):
         return self
 
     def get_agreement_text(self):
+
         return self.login_find_element(self.wechat_agreement).text
 
     def not_serach_wechat(self):
@@ -54,4 +55,6 @@ class Login(BasePage):
             toast = self.get_toast()
             return toast
 
+    def get_test_activity(self):
+        self.get_now_activity()
 
