@@ -12,11 +12,11 @@ class MessagePage(BasePage):
     posttab = (AppiumBy.ID, "com.intelcupid.shesay:id/tvPosts")
 
     def click_message_tab(self):
-        self.find_app_element(self.sessiontab).click()
+        self.find_app_element(self.sessiontab)
         return self
 
     def click_post_tab(self):
-        self.find_app_element(self.posttab).click()
+        self.find_app_element(self.posttab)
         return PostsPage(self.driver)
 
     def get_message_tab_text(self):

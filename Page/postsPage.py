@@ -14,10 +14,10 @@ class PostsPage(BasePage):
     friendlikeemoji = (AppiumBy.ID, "com.intelcupid.shesay:id/ivFriendLikeEmoji2")
 
     def click_addposttab(self):
-        self.find_app_element(self.addposttab).click()
+        self.find_app_element(self.addposttab)
         return PostNews(self.driver)
 
     def click_postlike(self):
-        self.find_app_element(self.postlike).click()
-        self.find_app_element(self.friendlikeemoji).click()
+        self.find_app_element(self.postlike)
+        self.find_app_element(self.friendlikeemoji)
 

@@ -25,8 +25,11 @@ class BasePage:
 
         try:
             self.handle_box()
+            if self.is_element_exist(locator[1]):
 
-            return self.driver.find_element(*locator)
+                return self.driver.find_element(*locator).click()
+            else:
+                Log.print_console("error", "{}未找到".format(locator[1]))
 
         except Exception as e:
             str_element = self.element_in_page_source("com.intelcupid.shesay")
@@ -37,7 +40,7 @@ class BasePage:
     def login_find_element(self, locator):
         try:
             self.login_handle_box()
-            return self.driver.find_element(*locator)
+            return self.driver.find_element(*locator).click()
         except Exception as e:
             str_element = self.element_in_page_source("com.intelcupid.shesay")
             if str_element is False:

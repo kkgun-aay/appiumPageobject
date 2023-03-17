@@ -10,6 +10,6 @@ class MyHome(BasePage):
 
         def click_myhome_setting(self):
 
-            self.find_app_element(self.myhomesetting).click()
+            self.find_app_element(self.myhomesetting)
             from Page.myhomesettingPage import MyhomeSetting
             return MyhomeSetting(self.driver)

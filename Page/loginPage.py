@@ -19,16 +19,16 @@ class Login(BasePage):
     strallowloction = "com.intelcupid.shesay:id/btnAllowLocation"
 
     def app_login(self):
-        self.login_find_element(self.remember).click()
-        self.login_find_element(self.wechat).click()
+        self.login_find_element(self.remember)
+        self.login_find_element(self.wechat)
         return recommEnd(self.driver)
 
     def click_agerrpopup(self):
-        self.find_app_element(self.agreepopup).click()
+        self.find_app_element(self.agreepopup)
         return self
 
     def click_wechat_icon(self):
-        self.find_app_element(self.wechat).click()
+        self.find_app_element(self.wechat)
         return self
 
     def get_agreement_text(self):
@@ -41,7 +41,7 @@ class Login(BasePage):
             self.click_agerrpopup()
             if self.is_element_exist(self.osbutton) is True:
                 #这里用底层的find方法，因为自己封装的检查了当前Activity，弹出系统弹窗时Activity不是app的
-                self.driver.find_element(AppiumBy.ID, self.osbutton).click()
+                self.driver.find_element(AppiumBy.ID, self.osbutton)
                 self.click_wechat_icon()
                 toast = self.get_toast()
                 return toast
@@ -50,11 +50,9 @@ class Login(BasePage):
                 toast = self.get_toast()
                 return toast
         else:
-            # self.login_find_element(self.wechat).click()
+            # self.login_find_element(self.wechat)
             self.click_wechat_icon()
             toast = self.get_toast()
             return toast
 
-    def get_test_activity(self):
-        self.get_now_activity()
 

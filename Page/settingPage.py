@@ -11,21 +11,21 @@ class Setting(BasePage):
     location = (AppiumBy.ID, "com.intelcupid.shesay:id/tvLocationEdit")
 
     def click_back(self):
-        self.find_app_element(self.back).click()
+        self.find_app_element(self.back)
         from Page.recommendPage import recommEnd
         return recommEnd(self.driver)
 
     def click_finish(self):
-        self.find_app_element(self.finish).click()
+        self.find_app_element(self.finish)
         from Page.recommendPage import recommEnd
         return recommEnd(self.driver)
 
     def get_setting_text(self):
-        print(self.find_app_element(self.settingtext).text())
         text = self.find_app_element(self.settingtext).text()
+        print(text)
         return text
 
     def click_location(self):
-        self.find_app_element(self.location).click()
+        self.find_app_element(self.location)
         from Page.settingLocationPage import Location
         return Location(self.driver)

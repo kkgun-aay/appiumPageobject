@@ -12,6 +12,6 @@ class MyhomeSetting(BasePage):
     def click_logout(self):
         text = "退出登录"
         self.scroll_find_element(text)
-        self.find_app_element(self.logoutpop).click()
+        self.find_app_element(self.logoutpop)
         from Page.loginPage import Login
         return Login(self.driver)
